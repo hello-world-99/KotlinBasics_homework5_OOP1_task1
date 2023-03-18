@@ -5,8 +5,9 @@ import Post.Geo.Geo
 import Post.Geo.Place
 
 fun main() {
+
     var wall= WallService
-    val newPost=WallService.original
+    //val newPost=WallService.original.copy()
   //  val newPost1:Post=Post(1,1,1,1,
   //       1672520400,"helloworld",1,
   //       1,false,Comment(0,true,true,true,true),
@@ -16,6 +17,6 @@ fun main() {
   //        1, emptyArray<Int>(), true,true,true,true,
   //       false, false,
   //       Donut(false, 0, Placeholder(), false, "duration"), 1)
-    wall.add(newPost)
+//       wall.add(newPost)
 
 }

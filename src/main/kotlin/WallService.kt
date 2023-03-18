@@ -4,10 +4,12 @@ import Post.Donut.Placeholder
 import Post.Geo.Geo
 import Post.Geo.Place
 
+
+
 object WallService{
-    private var posts = emptyArray<Post>()
-    private var id:Int=0
-    val original:Post=Post(1,1,1,1,
+    var posts = emptyArray<Post>()
+
+    val original:Post=Post(0,1,1,1,
         1672520400,"helloworld",1,
         1,false, Comment(0,true,true,true,true),
         Copyright(1,"www.vk.com", "aaa", "type1"), Like(100,true,true,true),
@@ -17,22 +19,22 @@ object WallService{
         false, false,
         Donut(false, 0, Placeholder(), false, "duration"), 1)
 
+    private var id:Int=0
+
     fun add(post: Post): Post{
 
-      //  post.id=id
+
         id++
-        posts+=post
+        val copyPost =post.copy(id=id)
+        posts+=copyPost
 
         return  posts.last()
     }
-    fun createId(post: Post){
-
-    }
     fun update(post: Post): Boolean {
-        for (post1 in posts){
-            //return post1.id==post.id
+        var check:Boolean=false
+        for (postCheck in posts){
+            check = postCheck.id==post.id
         }
-        return false
+        return check
     }
-    operator fun set(int: Int,value: Post) {}
 }
