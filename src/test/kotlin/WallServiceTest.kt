@@ -1,4 +1,6 @@
+import org.junit.After
 import org.junit.Assert.*
+import org.junit.Before
 import org.junit.Test
 
 class WallServiceTest {
@@ -32,8 +34,15 @@ class WallServiceTest {
     fun update3() {
 
         val newPost=WallService.original.copy()
-
+        wall.add(newPost)
+        wall.add(newPost)
+        wall.add(newPost)
         wall.update(newPost.copy(id=1, text = "changed"))
         assertEquals(wall.posts[0].text=="changed",true)
     }
+    @Before
+    fun clearBeforeTest() {
+        wall.clear()
+    }
+
 }

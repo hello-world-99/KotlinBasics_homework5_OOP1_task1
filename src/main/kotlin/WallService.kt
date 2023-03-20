@@ -40,4 +40,10 @@ object WallService{
         }
         return check
     }
+
+    fun clear() {
+        posts = emptyArray()
+        id=0
+        // также здесь нужно сбросить счетчик для id постов, если он у вас используется
+    }
 }
