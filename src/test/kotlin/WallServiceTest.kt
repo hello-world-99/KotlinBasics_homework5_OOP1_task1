@@ -3,10 +3,10 @@ import org.junit.Test
 
 class WallServiceTest {
 
-
+    var wall= WallService
     @Test
     fun add1() {
-        var wall= WallService
+
         val newPost=WallService.original.copy()
 
         assertEquals(wall.add(newPost).id!=0,true)
@@ -14,7 +14,7 @@ class WallServiceTest {
 
     @Test
     fun update1() {
-        var wall= WallService
+
         val newPost=WallService.original.copy()
         wall.add(newPost)
 
@@ -22,10 +22,18 @@ class WallServiceTest {
     }
     @Test
     fun update2() {
-        var wall= WallService
+
         val newPost=WallService.original.copy()
         wall.add(newPost)
 
         assertEquals(wall.update(newPost.copy(id=7)),false)
+    }
+    @Test
+    fun update3() {
+
+        val newPost=WallService.original.copy()
+
+        wall.update(newPost.copy(id=1, text = "changed"))
+        assertEquals(wall.posts[0].text=="changed",true)
     }
 }

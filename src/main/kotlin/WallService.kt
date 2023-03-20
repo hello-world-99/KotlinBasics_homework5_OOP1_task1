@@ -9,7 +9,7 @@ import Post.Geo.Place
 object WallService{
     var posts = emptyArray<Post>()
 
-    val original:Post=Post(0,1,1,1,
+    var original:Post=Post(0,1,1,1,
         1672520400,"helloworld",1,
         1,false, Comment(0,true,true,true,true),
         Copyright(1,"www.vk.com", "aaa", "type1"), Like(100,true,true,true),
@@ -28,12 +28,15 @@ object WallService{
         val copyPost =post.copy(id=id)
         posts+=copyPost
 
-        return  posts.last()
+        return posts.last()
     }
     fun update(post: Post): Boolean {
         var check:Boolean=false
         for (postCheck in posts){
-            check = postCheck.id==post.id
+            if(postCheck.id==post.id){
+                postCheck.text = post.text
+                check =true
+            }
         }
         return check
     }
